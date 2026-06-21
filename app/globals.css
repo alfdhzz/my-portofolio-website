@@ -1,26 +1,70 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light Mode */
+  --background: #F8F5F2;
+  --foreground: #2D0507;
+  --text-secondary: #5C0A0E;
+  --border-color: rgba(128, 14, 19, 0.15);
+  
+  --primary: #800E13;
+  --primary-dark: #5C0A0E;
+  --primary-light: #A83A3F;
+  --accent: #D9C7A3;
+
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-border: rgba(128, 14, 19, 0.15);
+  --shadow-color: rgba(128, 14, 19, 0.1);
+}
+
+.dark {
+  /* Dark Mode - Matched to the photo background */
+  --background: #3D070B;
+  --foreground: #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.75);
+  --border-color: rgba(255, 255, 255, 0.1);
+  
+  --primary: #D9C7A3;
+  --primary-dark: #C5B08A;
+  --primary-light: #F2E6CD;
+  --accent: #5C0A0E;
+
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --shadow-color: rgba(217, 199, 163, 0.15);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-color: var(--border-color);
+  
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-accent: var(--accent);
+
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --color-shadow-color: var(--shadow-color);
+
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.dark body {
+  /* Subtle vignette gradient in dark mode to match photo */
+  background-image: radial-gradient(circle at center, #5A0D14 0%, #3D070B 80%, #1A0305 100%);
+  background-attachment: fixed;
 }
